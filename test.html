@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <title>Portfolio – Zeinabou Développeuse</title>
+
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --text: #333;
+      --card: white;
+    }
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #f0f0f0;
+      --card: #2c2c2c;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .project {
+      background: var(--card);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #3498db;
+      transition: transform 0.3s;
+    }
+    .project:hover {
+      transform: scale(1.02);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #2c3e50;
+      color: white;
+    }
+    button {
+      margin: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zeinabou – Développeuse Full Stack</h1>
+    <p>Passionnée par le développement web, la data et la résolution de problèmes techniques</p>
+    <button onclick="toggleDarkMode()">🌙 Mode sombre</button>
+  </header>
+
+  <section>
+    <h2>À propos de moi</h2>
+    <p>Je suis une développeuse polyvalente, à l’aise avec Python, Java, Laravel, Vue.js, MySQL et bien d’autres outils. J’aime créer des interfaces élégantes, résoudre des bugs complexes et transformer des idées en applications fonctionnelles.</p>
+  </section>
+
+  <section>
+    <h2>Projets récents</h2>
+
+    <div class="project">
+      <h3>🗺️ Carte interactive du Niger</h3>
+      <p>Application web affichant les subdivisions administratives du Niger avec des données dynamiques. Intégration de Leaflet.js et données géographiques en GeoJSON.</p>
+    </div>
+
+    <div class="project">
+      <h3>📊 Tableau de bord Power BI</h3>
+      <p>Analyse épidémiologique avec visualisations interactives, nettoyage de données sous Excel et automatisation avec Power Query.</p>
+    </div>
+
+    <div class="project">
+      <h3>💻 Portfolio personnel</h3>
+      <p>Site responsive développé avec HTML, CSS, et JavaScript pour présenter mes compétences, projets et expériences professionnelles.</p>
+    </div>
+  </section>
+<section id="cv">
+  <h2>Mon CV</h2>
+  <p>Téléchargez mon CV en cliquant ci-dessous :</p>
+  <a href="cv_zeinabou.pdf" download style="font-weight: bold;">📥 Télécharger le CV</a>
+</section>
+<section id="map">
+  <h2>Carte interactive</h2>
+  <div id="mapid" style="height: 400px;"></div>
+</section>
+
+<script>
+  var map = L.map('mapid').setView([13.5, 2.1], 6); // Centré sur le Niger
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+</script>
+
+<section id="gallery">
+  <h2>Galerie de projets</h2>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <img src="projet1.jpg" alt="Projet 1" style="width: 200px;">
+    <img src="projet2.jpg" alt="Projet 2" style="width: 200px;">
+    <img src="projet3.jpg" alt="Projet 3" style="width: 200px;">
+  </div>
+</section>
+<section id="carousel">
+  <h2>Galerie dynamique</h2>
+  <div style="text-align:center;">
+    <img id="carousel-img" src="projet1.jpg" alt="Projet" style="width:300px; border-radius:8px;">
+    <br>
+    <button onclick="prevImage()">⬅️</button>
+    <button onclick="nextImage()">➡️</button>
+  </div>
+</section>
+
+<section id="filter">
+  <h2>Filtrer les projets</h2>
+  <select onchange="filterProjects(this.value)">
+    <option value="all">Tous</option>
+    <option value="vue">Vue.js</option>
+    <option value="laravel">Laravel</option>
+    <option value="powerbi">Power BI</option>
+  </select>
+
+  <div id="project-list">
+    <div class="project" data-tech="vue">📊 Dashboard Vue.js</div>
+    <div class="project" data-tech="laravel">🔐 Authentification Laravel</div>
+    <div class="project" data-tech="powerbi">📈 Analyse Power BI</div>
+  </div>
+</section>
+
+<script>
+  function filterProjects(tech) {
+    document.querySelectorAll('#project-list .project').forEach(p => {
+      p.style.display = (tech === 'all' || p.dataset.tech === tech) ? 'block' : 'none';
+    });
+  }
+</script>
+
+  <section>
+    <h2>Contactez-moi</h2>
+    <form>
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message :</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Zeinabou – Tous droits réservés</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+
+
+<script>
+  const images = ["projet1.jpg", "projet2.jpg", "projet3.jpg"];
+  let index = 0;
+  function showImage() {
+    document.getElementById("carousel-img").src = images[index];
+  }
+  function nextImage() {
+    index = (index + 1) % images.length;
+    showImage();
+  }
+  function prevImage() {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+  }
+</script>
+<script>
+  var map = L.map('mapid').setView([13.5, 2.1], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  var marker = L.marker([13.5, 2.1]).addTo(map);
+  marker.bindPopup("<b>Bienvenue à Tahoua !</b>").openPopup();
+
+  setTimeout(() => {
+    map.setView([14.0, 1.5], 7); // Zoom sur une autre région
+  }, 3000);
+</script>
+
+</body>
+</html>
