@@ -4,16 +4,15 @@
       --bg: #f4f4f4;
       --text: #333;
       --card: white;
-  
   --c-bg: white;
-  --c-card: #2c3e50;;
-  --c-text: #e5e7eb;
-  --c-muted: #9ca3af;
+--color-secondary: #2c3e50;
   --color-primary: #3498db;
   --c-error: #ef4444;
-  --c-border: #1f2937;
+ 
 }
-
+::-webkit-input-placeholder { color: white; }
+:-ms-input-placeholder { color: white; }
+::-ms-input-placeholder { color: white; }
 .contact-section {
   background: var(--c-bg);
   color: var(--c-text);
@@ -33,7 +32,7 @@
   margin: 0 0 0.5rem;
 }
 .contact-subtitle {
-  color: var(--c-muted);
+  color: var(--c-bg);
   margin: 0;
 }
 
@@ -47,8 +46,8 @@
 }
 
 form {
-  background: var(--c-card);
-  border: 1px solid var(--c-border);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   border-radius: 12px;
   padding: 1.25rem;
 }
@@ -58,14 +57,15 @@ form {
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 label {
   font-weight: 600;
 }
 input, textarea {
-  background: #0b1220;
-  color: var(--c-text);
-  border: 1px solid var(--c-border);
+  background: var(--color-primary);
+  color: white;
+  border: 1px solid var(--color-primary);
   border-radius: 10px;
   padding: 0.75rem;
   outline: none;
@@ -104,8 +104,8 @@ input:focus, textarea:focus {
 }
 
 .contact-aside {
-  background: var(--c-card);
-  border: 1px solid var(--c-border);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   border-radius: 12px;
   padding: 1.25rem;
 }
@@ -123,9 +123,9 @@ input:focus, textarea:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--c-text);
+  color: var(--c-bg);
   text-decoration: none;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--c-bg);
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
 }
@@ -134,13 +134,13 @@ input:focus, textarea:focus {
 }
 
 .contact-note {
-  color: var(--c-muted);
+  color: var(--c-bg);
   margin: 0;
 }
 
 .form-status {
   margin-top: 0.75rem;
-  color: var(--c-muted);
+  color: var(--c-bg);
   min-height: 1.2em;
 }
 
