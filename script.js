@@ -31,7 +31,7 @@ console.log("map: ", map);
     });
   }
 
-   const images = ["/public/sitePlantes.png", "/public/sitePlantes.png", "/public/sitePlantes.png"];
+   const images = ["/public/sitePlantes.png", "/public/sitePlantes.png"];
   let index = 0;
   function showImage() {
     document.getElementById("carousel-img").src = images[index];

@@ -5,11 +5,11 @@
       --text: #333;
       --card: white;
   
-  --c-bg: #0f172a;
-  --c-card: #111827;
+  --c-bg: white;
+  --c-card: #2c3e50;;
   --c-text: #e5e7eb;
   --c-muted: #9ca3af;
-  --c-accent: #3b82f6;
+  --color-primary: #3498db;
   --c-error: #ef4444;
   --c-border: #1f2937;
 }
@@ -72,12 +72,12 @@ input, textarea {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 input:focus, textarea:focus {
-  border-color: var(--c-accent);
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
 }
 
 .btn-submit {
-  background: var(--c-accent);
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 10px;
@@ -130,7 +130,7 @@ input:focus, textarea:focus {
   border-radius: 10px;
 }
 .contact-link:hover {
-  border-color: var(--c-accent);
+  border-color: var(--color-primary);
 }
 
 .contact-note {
