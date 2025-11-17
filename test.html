@@ -4,85 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
 
   <title>Portfolio – Zeinabou Développeuse</title>
 
-  <style>
-    :root {
-      --bg: #f4f4f4;
-      --text: #333;
-      --card: white;
-    }
-    body.dark {
-      --bg: #1e1e1e;
-      --text: #f0f0f0;
-      --card: #2c2c2c;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-    }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .project {
-      background: var(--card);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-left: 5px solid #3498db;
-      transition: transform 0.3s;
-    }
-    .project:hover {
-      transform: scale(1.02);
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #2c3e50;
-      color: white;
-    }
-    button {
-      margin: 1rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    form {
-      background: var(--card);
-      padding: 1rem;
-      border-radius: 5px;
-    }
-  </style>
 </head>
 <body>
 
   <header>
     <h1>Zeinabou – Développeuse Full Stack</h1>
-    <p>Passionnée par le développement web, la data et la résolution de problèmes techniques</p>
+    <p>Passionnée par le développement web/ Mobile, la data et la résolution de problèmes techniques</p>
     <button onclick="toggleDarkMode()">🌙 Mode sombre</button>
   </header>
 
   <section>
     <h2>À propos de moi</h2>
-    <p>Je suis une développeuse polyvalente, à l’aise avec Python, Java, Laravel, Vue.js, MySQL et bien d’autres outils. J’aime créer des interfaces élégantes, résoudre des bugs complexes et transformer des idées en applications fonctionnelles.</p>
+    <p>Je suis une développeuse polyvalente, à l’aise avec Python, JavaScript, Laravel, Vue.js,Java,MySQL et bien d’autres outils. J’aime créer des interfaces élégantes, résoudre des bugs complexes et transformer des idées en applications fonctionnelles.</p>
   </section>
 
   <section>
@@ -106,32 +45,29 @@
 <section id="cv">
   <h2>Mon CV</h2>
   <p>Téléchargez mon CV en cliquant ci-dessous :</p>
-  <a href="cv_zeinabou.pdf" download style="font-weight: bold;">📥 Télécharger le CV</a>
-</section>
-<section id="map">
-  <h2>Carte interactive</h2>
-  <div id="mapid" style="height: 400px;"></div>
+  <a href="/public/CV-Zeinabou ISSAKA.pdf" download style="font-weight: bold;">📥 Télécharger le CV</a>
 </section>
 
-<script>
-  var map = L.map('mapid').setView([13.5, 2.1], 6); // Centré sur le Niger
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-</script>
+
 
 <section id="gallery">
   <h2>Galerie de projets</h2>
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="projet1.jpg" alt="Projet 1" style="width: 200px;">
-    <img src="projet2.jpg" alt="Projet 2" style="width: 200px;">
-    <img src="projet3.jpg" alt="Projet 3" style="width: 200px;">
+    <img src="/public/sitePlantes.png" alt="Projet 1" style="width: 300px;">
+    <img src="/public/sitePlantes.png" alt="Projet 1" style="width: 300px;">
+    <img src="/public/sitePlantes.png" alt="Projet 1" style="width: 300px;">
+   
+
   </div>
 </section>
 <section id="carousel">
   <h2>Galerie dynamique</h2>
   <div style="text-align:center;">
-    <img id="carousel-img" src="projet1.jpg" alt="Projet" style="width:300px; border-radius:8px;">
+   <div>
+    <img id="carousel-img" src="/public/sitePlantes.png" alt="Projet" style="width:300px; border-radius:8px;"><br>
+     <a href="https://github.com/inz2020/repo-html-css-js/tree/main/repo-html-css-js/sitePlantes">Visiter 👉 </a>
+     </div>
+      
     <br>
     <button onclick="prevImage()">⬅️</button>
     <button onclick="nextImage()">➡️</button>
@@ -154,16 +90,91 @@
   </div>
 </section>
 
-<script>
-  function filterProjects(tech) {
-    document.querySelectorAll('#project-list .project').forEach(p => {
-      p.style.display = (tech === 'all' || p.dataset.tech === tech) ? 'block' : 'none';
-    });
-  }
-</script>
+<section id="contact" class="contact-section">
+  <div class="container">
+    <header class="contact-header">
+      <h2 class="contact-title">Me contacter</h2>
+      <p class="contact-subtitle">Dis-moi ce que tu construis. Je réponds rapidement.</p>
+    </header>
 
+    <div class="contact-grid">
+      <!-- Formulaire -->
+      <form id="contactForm" novalidate aria-labelledby="contactTitle">
+        <div class="form-row">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="name" placeholder="Nom complet" required aria-required="true" autocomplete="name">
+          <small class="error" id="nameError" role="alert"></small>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required aria-required="true" autocomplete="email" inputmode="email">
+          <small class="error" id="emailError" role="alert"></small>
+        </div>
+
+        <div class="form-row">
+          <label for="subject">Sujet</label>
+          <input type="text" id="subject" name="subject" placeholder="Objet du message" required aria-required="true">
+          <small class="error" id="subjectError" role="alert"></small>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Parle-moi de ton idée, ton besoin, tes délais…" required aria-required="true"></textarea>
+          <small class="error" id="messageError" role="alert"></small>
+        </div>
+
+        <!-- Champ honey-pot anti-spam (non visible) -->
+        <div class="form-row hp">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </div>
+
+        <button type="submit" class="btn-submit" aria-label="Envoyer le message">Envoyer</button>
+
+        <div class="form-status" aria-live="polite" role="status" id="formStatus"></div>
+      </form>
+
+      <!-- Options de contact direct -->
+      <aside class="contact-aside">
+        <h3 class="aside-title">Autres moyens</h3>
+        <ul class="contact-list">
+          <li>
+            <a class="contact-link" href="mailto:izeinabou18@yahoo.com" rel="noopener">
+              <span aria-hidden="true">📧</span> Email
+            </a>
+          </li>
+          <li>7
+            <a class="contact-link" href="https://wa.me/2278789788" target="_blank" rel="noopener">
+              <span aria-hidden="true">📱</span> WhatsApp
+            </a>
+          </li>
+          <li>
+            <a class="contact-link" href="https://github.com/zeinabou"target="_blank" rel="noopener">
+              <span aria-hidden="true">💻</span> GitHub
+            </a>
+          </li>
+          <li>
+            <a class="contact-link" href="https://linkedin.com/in/zeinabou-issaka-nouhou-a8109a164" target="_blank" rel="noopener">
+              <span aria-hidden="true">🔗</span> LinkedIn
+            </a>
+          </li>
+        </ul>
+
+        <p class="contact-note">
+          Je suis basée à Tahoua (WAT). Dispo pour projets carto, data viz, et apps web.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 
   <section>
     <h2>Contactez-moi</h2>
+      <p>Email : izeinabou18@yahoo.com</p>
+    <p>+227 80 33 82 20/ +227 87 89 78 87</p>
+    <p>GitHub : <a href="https://github.com/zeinabou" target="_blank">github.com/zeinabou</a></p>
     <form>
       <label for="name">Nom :</label>
       <input type="text" id="name" name="name" required>
@@ -176,47 +187,15 @@
 
       <button type="submit">Envoyer</button>
     </form>
-  </section>
+  </section> -->
 
   <footer>
     <p>&copy; 2025 Zeinabou – Tous droits réservés</p>
   </footer>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-  </script>
 
 
-<script>
-  const images = ["projet1.jpg", "projet2.jpg", "projet3.jpg"];
-  let index = 0;
-  function showImage() {
-    document.getElementById("carousel-img").src = images[index];
-  }
-  function nextImage() {
-    index = (index + 1) % images.length;
-    showImage();
-  }
-  function prevImage() {
-    index = (index - 1 + images.length) % images.length;
-    showImage();
-  }
-</script>
-<script>
-  var map = L.map('mapid').setView([13.5, 2.1], 6);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
 
-  var marker = L.marker([13.5, 2.1]).addTo(map);
-  marker.bindPopup("<b>Bienvenue à Tahoua !</b>").openPopup();
-
-  setTimeout(() => {
-    map.setView([14.0, 1.5], 7); // Zoom sur une autre région
-  }, 3000);
-</script>
 
 </body>
 </html>
